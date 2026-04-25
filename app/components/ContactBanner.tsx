@@ -8,7 +8,7 @@ interface ContactBannerProps {
 
 export default function ContactBanner({ onEnquire }: ContactBannerProps) {
   return (
-    <section className="bg-white px-4 md:px-8 py-10 md:py-16">
+    <section className="bg-white px-4 md:px-8 py-5 md:py-8">
       <div
         className="bg-blue-600 rounded-2xl mx-0 md:mx-16 py-10 md:py-14 px-6 md:px-12 relative overflow-hidden"
       >

@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function CATFramework() {
   return (
-    <div className="bg-gradient-to-br from-blue-50 to-white py-16 md:py-24 px-4">
+    <div className="bg-gradient-to-br from-blue-50 to-white py-8 md:py-12 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Section Heading */}
         <h2 className="text-2xl md:text-3xl font-bold text-center">

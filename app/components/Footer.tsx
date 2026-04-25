@@ -43,7 +43,7 @@ export default function Footer({ onEnquire }: FooterProps) {
   };
 
   return (
-    <footer className="bg-black md:bg-white py-16 md:py-24 px-6 md:px-16">
+    <footer className="bg-black md:bg-white py-8 md:py-12 px-6 md:px-16">
       {/* Top Row */}
       <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-6">
         {/* Left: Logo and Social Icons */}

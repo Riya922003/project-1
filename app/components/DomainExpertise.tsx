@@ -13,7 +13,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string; strokeWi
 
 export default function DomainExpertise() {
   return (
-    <div className="bg-white py-16 md:py-24 px-4">
+    <div className="bg-white py-12 md:py-12 px-4">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-2xl md:text-3xl font-bold text-center">
           <span className="text-black">Our </span>

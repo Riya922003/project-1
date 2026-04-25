@@ -2,7 +2,7 @@ import { stats } from '../data/mock';
 
 export default function Stats() {
   return (
-    <div className="bg-white py-16 md:py-24 px-4">
+    <div className="bg-white py-14 md:py-20 px-4">
       <div className="max-w-7xl mx-auto text-center">
         {/* Section Heading */}
         <h2 className="text-3xl font-bold">

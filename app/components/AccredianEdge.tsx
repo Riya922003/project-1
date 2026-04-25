@@ -1,6 +1,6 @@
 export default function AccredianEdge() {
   return (
-    <div className="bg-white py-16 md:py-24 px-4">
+    <div className="bg-white py-10 md:py-12 px-2">
       <div className="max-w-7xl mx-auto">
         {/* Section Heading */}
         <h2 className="text-3xl font-bold text-center">
