@@ -1,6 +1,10 @@
 'use client';
 
-export default function Footer() {
+interface FooterProps {
+  onEnquire: () => void;
+}
+
+export default function Footer({ onEnquire }: FooterProps) {
   const SocialIcon = ({ icon, href }: { icon: string; href: string }) => {
     const icons: { [key: string]: React.ReactNode } = {
       facebook: (
@@ -61,7 +65,10 @@ export default function Footer() {
 
         {/* Right: Enquire Now Button */}
         <div className="w-full md:w-auto text-center md:text-right">
-          <button className="bg-blue-600 text-white rounded-lg px-6 py-3 font-semibold hover:bg-blue-700 transition-colors w-full md:w-auto">
+          <button 
+            onClick={onEnquire}
+            className="bg-blue-600 text-white rounded-lg px-6 py-3 font-semibold hover:bg-blue-700 transition-colors w-full md:w-auto"
+          >
             Enquire Now
           </button>
           <p className="text-gray-400 md:text-gray-600 text-sm mt-2">Speak with our Advisor</p>

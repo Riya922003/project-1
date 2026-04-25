@@ -2,15 +2,11 @@
 
 import { Headset } from 'lucide-react';
 
-export default function ContactBanner() {
-  const handleContactClick = () => {
-    // Smooth scroll to FAQs section
-    const faqsSection = document.getElementById('faqs');
-    if (faqsSection) {
-      faqsSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+interface ContactBannerProps {
+  onEnquire: () => void;
+}
 
+export default function ContactBanner({ onEnquire }: ContactBannerProps) {
   return (
     <section className="bg-white px-4 md:px-8 py-12">
       <div className="bg-blue-600 rounded-2xl mx-2 md:mx-6 py-18 px-4">
@@ -35,7 +31,7 @@ export default function ContactBanner() {
           {/* Right: Button */}
           <div className="flex-shrink-0 w-full md:w-auto">
             <button
-              onClick={handleContactClick}
+              onClick={onEnquire}
               className="w-full md:w-auto bg-white text-blue-600 font-semibold rounded-xl px-8 py-3 hover:bg-gray-100 transition-colors"
             >
               Contact Us &gt;

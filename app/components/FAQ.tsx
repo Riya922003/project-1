@@ -2,9 +2,13 @@
 
 import { useState } from 'react';
 import { faqCategories, faqs } from '../data/mock';
-import { ChevronDown, ChevronUp, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 
-export default function FAQ() {
+interface FAQProps {
+  onEnquire: () => void;
+}
+
+export default function FAQ({ onEnquire }: FAQProps) {
   const [activeCategory, setActiveCategory] = useState('About the Course');
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [categorySlideIndex, setCategorySlideIndex] = useState(0);
@@ -13,15 +17,6 @@ export default function FAQ() {
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
-  };
-
-  const handleCategorySlide = (direction: 'left' | 'right') => {
-    if (direction === 'left') {
-      setCategorySlideIndex(Math.max(0, categorySlideIndex - 1));
-    } else {
-      setCategorySlideIndex(Math.min(faqCategories.length - 1, categorySlideIndex + 1));
-    }
-    setActiveCategory(faqCategories[categorySlideIndex + (direction === 'right' ? 1 : -1)]);
   };
 
   return (
@@ -162,7 +157,10 @@ export default function FAQ() {
 
         {/* Enquire Now Button */}
         <div className="flex justify-center mt-12">
-          <button className="bg-blue-600 text-white px-10 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+          <button 
+            onClick={onEnquire}
+            className="bg-blue-600 text-white px-10 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+          >
             Enquire Now
           </button>
         </div>

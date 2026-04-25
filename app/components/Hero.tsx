@@ -1,13 +1,10 @@
 'use client';
 
-export default function Hero() {
-  const handleEnquireClick = () => {
-    const faqsSection = document.getElementById('faqs');
-    if (faqsSection) {
-      faqsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
+interface HeroProps {
+  onEnquire: () => void;
+}
 
+export default function Hero({ onEnquire }: HeroProps) {
   return (
     <div className="bg-slate-50 py-4 px-6 md:px-10">
       <div className="max-w-[1200px] mx-auto">
@@ -51,7 +48,7 @@ export default function Hero() {
               </div>
 
               <button
-                onClick={handleEnquireClick}
+                onClick={onEnquire}
                 className="mt-6 w-full bg-blue-600 hover:bg-blue-700 py-3 rounded-lg text-white font-semibold text-base transition-colors duration-200"
               >
                 Enquire Now
@@ -90,7 +87,7 @@ export default function Hero() {
               </div>
 
               <button
-                onClick={handleEnquireClick}
+                onClick={onEnquire}
                 className="mt-8 w-fit bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg text-white font-semibold text-base transition-colors duration-200"
               >
                 Enquire Now
