@@ -76,7 +76,7 @@ export default function Footer({ onEnquire }: FooterProps) {
       </div>
 
       {/* Horizontal Divider */}
-      <div className="border-t border-gray-700 md:border-gray-200 my-6"></div>
+      <div className="border-t my-6" style={{ borderColor: '#1d1c1f' }}></div>
 
       {/* Two Column Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
@@ -120,7 +120,7 @@ export default function Footer({ onEnquire }: FooterProps) {
       </div>
 
       {/* Bottom Divider */}
-      <div className="border-t border-gray-700 md:border-gray-200 my-6"></div>
+       <div className="border-t my-6" style={{ borderColor: '#1d1c1f' }}></div>
 
       {/* Copyright */}
       <p className="text-center text-gray-500 md:text-gray-400 text-sm">
