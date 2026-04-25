@@ -2,7 +2,7 @@ import { howItWorksSteps } from '../data/mock';
 
 export default function HowItWorks() {
   const icons = [
-    <svg key="chart" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
+    <svg key="chart" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8" aria-label="Chart icon">
       <path d="M12 16v5"></path>
       <path d="M16 14v7"></path>
       <path d="M20 10v11"></path>
@@ -10,12 +10,12 @@ export default function HowItWorks() {
       <path d="M4 18v3"></path>
       <path d="M8 14v7"></path>
     </svg>,
-    <svg key="presentation" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
+    <svg key="presentation" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8" aria-label="Presentation icon">
       <path d="M2 3h20"></path>
       <path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3"></path>
       <path d="m7 21 5-5 5 5"></path>
     </svg>,
-    <svg key="monitor" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
+    <svg key="monitor" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8" aria-label="Monitor icon">
       <path d="M10 7.75a.75.75 0 0 1 1.142-.638l3.664 2.249a.75.75 0 0 1 0 1.278l-3.664 2.25a.75.75 0 0 1-1.142-.64z"></path>
       <path d="M12 17v4"></path>
       <path d="M8 21h8"></path>
@@ -24,7 +24,7 @@ export default function HowItWorks() {
   ];
 
   return (
-    <div className="bg-white py-16 px-4">
+    <div className="bg-white py-16 md:py-24 px-4">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl font-bold text-center">
           <span className="text-black">How We </span>

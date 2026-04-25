@@ -1,6 +1,6 @@
 export default function AccredianEdge() {
   return (
-    <div className="bg-white py-16 px-4">
+    <div className="bg-white py-16 md:py-24 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Section Heading */}
         <h2 className="text-3xl font-bold text-center">
@@ -19,6 +19,7 @@ export default function AccredianEdge() {
           <img 
             src="/image/accredian-edge/accredian-edge-usp-v3.svg" 
             alt="Accredian Edge - Our Strategic Training Advantages"
+            loading="lazy"
             className="w-full h-auto"
           />
         </div>
@@ -28,6 +29,7 @@ export default function AccredianEdge() {
           <img 
             src="/image/accredian-edge/accredian-edge-usp-mobile.svg" 
             alt="Accredian Edge - Our Strategic Training Advantages"
+            loading="lazy"
             className="w-full max-w-md h-auto"
           />
         </div>

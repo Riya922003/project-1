@@ -1,9 +1,8 @@
 import Image from 'next/image';
-import { catFramework } from '../data/mock';
 
 export default function CATFramework() {
   return (
-    <div className="bg-gradient-to-br from-blue-50 to-white py-16 px-4">
+    <div className="bg-gradient-to-br from-blue-50 to-white py-16 md:py-24 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Section Heading */}
         <h2 className="text-2xl md:text-3xl font-bold text-center">

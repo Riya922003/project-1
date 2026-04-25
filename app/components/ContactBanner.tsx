@@ -8,7 +8,7 @@ interface ContactBannerProps {
 
 export default function ContactBanner({ onEnquire }: ContactBannerProps) {
   return (
-    <section className="bg-white px-4 md:px-8 py-12">
+    <section className="bg-white px-4 md:px-8 py-16 md:py-24">
       <div className="bg-blue-600 rounded-2xl mx-2 md:mx-6 py-18 px-4">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Left: Icon */}

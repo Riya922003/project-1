@@ -25,10 +25,7 @@ export default function LeadForm({ isOpen, onClose }: LeadFormProps) {
   if (!isOpen) return null;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -39,9 +36,7 @@ export default function LeadForm({ isOpen, onClose }: LeadFormProps) {
     try {
       const response = await fetch('/api/leads', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
 
@@ -50,14 +45,8 @@ export default function LeadForm({ isOpen, onClose }: LeadFormProps) {
       if (response.ok) {
         setSubmitMessage('Thank you! Your enquiry has been submitted successfully.');
         setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          company: '',
-          domain: '',
-          candidates: '',
-          deliveryMode: '',
-          location: '',
+          name: '', email: '', phone: '', company: '',
+          domain: '', candidates: '', deliveryMode: '', location: '',
         });
         setTimeout(() => {
           onClose();
@@ -66,7 +55,7 @@ export default function LeadForm({ isOpen, onClose }: LeadFormProps) {
       } else {
         setSubmitMessage(data.message || 'Failed to submit. Please try again.');
       }
-    } catch (error) {
+    } catch {
       setSubmitMessage('An error occurred. Please try again.');
     } finally {
       setIsSubmitting(false);
@@ -74,20 +63,16 @@ export default function LeadForm({ isOpen, onClose }: LeadFormProps) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl max-w-4xl w-full overflow-hidden relative flex flex-col md:flex-row max-h-[90vh]">
-        {/* Close Button */}
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 z-10 bg-white rounded-full p-1"
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-
+    <div
+      className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+      onClick={onClose}
+    >
+      <div
+        className="bg-white rounded-2xl w-full max-w-3xl overflow-hidden relative flex flex-row max-h-[80vh]"
+        onClick={(e) => e.stopPropagation()}
+      >
         {/* Left Side - Image */}
-        <div className="hidden md:block md:w-1/2 relative">
+        <div className="hidden md:block w-[45%] relative min-h-[600px]">
           <Image
             src="/image/business-v2.webp"
             alt="Business professionals"
@@ -97,73 +82,81 @@ export default function LeadForm({ isOpen, onClose }: LeadFormProps) {
         </div>
 
         {/* Right Side - Form */}
-        <div className="w-full md:w-1/2 p-8 overflow-y-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Enquire Now</h2>
+        <div className="w-full md:w-[55%] p-8 overflow-y-auto relative">
+          {/* Close Button */}
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
+            aria-label="Close form"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+
+          <h2 className="text-2xl font-bold text-gray-900 mb-8">Enquire Now</h2>
 
           {submitMessage && (
-            <div className={`mb-4 p-3 rounded-lg ${submitMessage.includes('success') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+            <div className={`mb-4 p-3 rounded-lg text-sm ${
+              submitMessage.includes('success')
+                ? 'bg-green-100 text-green-700'
+                : 'bg-red-100 text-red-700'
+            }`}>
               {submitMessage}
             </div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-5">
-            <div>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="Enter Name"
-                required
-                className="w-full px-0 py-3 border-0 border-b border-gray-300 focus:ring-0 focus:border-blue-600 placeholder-gray-400"
-              />
-            </div>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Enter Name"
+              required
+              className="w-full px-0 py-3 border-0 border-b border-gray-300 focus:outline-none focus:border-blue-600 placeholder-gray-400 text-sm bg-transparent"
+            />
 
-            <div>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="Enter Email"
-                required
-                className="w-full px-0 py-3 border-0 border-b border-gray-300 focus:ring-0 focus:border-blue-600 placeholder-gray-400"
-              />
-            </div>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Enter Email"
+              required
+              className="w-full px-0 py-1 md:py-2 border-0 border-b border-gray-300 focus:outline-none focus:border-blue-600 placeholder-gray-400 text-sm bg-transparent"
+            />
 
-            <div className="flex gap-2">
-              <div className="flex items-center gap-2 border-b border-gray-300 pb-3">
-                <span className="text-2xl">🇮🇳</span>
-                <span className="text-gray-600">+91</span>
-              </div>
+            {/* Phone with country code */}
+            <div className="flex items-center gap-3 border-b border-gray-300 py-3">
+              <span className="text-lg">🇮🇳</span>
+              <span className="text-gray-500 text-sm">▾ +91</span>
               <input
                 type="tel"
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
                 placeholder=""
-                className="flex-1 px-0 py-3 border-0 border-b border-gray-300 focus:ring-0 focus:border-blue-600"
+                className="flex-1 border-0 focus:outline-none text-sm bg-transparent"
               />
             </div>
 
-            <div>
-              <input
-                type="text"
-                name="company"
-                value={formData.company}
-                onChange={handleChange}
-                placeholder="Enter company name"
-                required
-                className="w-full px-0 py-3 border-0 border-b border-gray-300 focus:ring-0 focus:border-blue-600 placeholder-gray-400"
-              />
-            </div>
+            <input
+              type="text"
+              name="company"
+              value={formData.company}
+              onChange={handleChange}
+              placeholder="Enter company name"
+              required
+              className="w-full px-0 py-1 md:py-2 border-0 border-b border-gray-300 focus:outline-none focus:border-blue-600 placeholder-gray-400 text-sm bg-transparent"
+            />
 
-            <div>
-              <select 
+            <div className="relative">
+              <select
                 name="domain"
                 value={formData.domain}
                 onChange={handleChange}
-                className="w-full px-0 py-3 border-0 border-b border-gray-300 focus:ring-0 focus:border-blue-600 text-gray-400 appearance-none bg-transparent cursor-pointer"
+                className="w-full px-0 py-1 md:py-2 border-0 border-b border-gray-300 focus:outline-none focus:border-blue-600 text-gray-400 appearance-none bg-transparent cursor-pointer text-sm"
               >
                 <option value="">Select Domain</option>
                 <option value="tech">Technology</option>
@@ -172,48 +165,50 @@ export default function LeadForm({ isOpen, onClose }: LeadFormProps) {
                 <option value="retail">Retail</option>
                 <option value="other">Other</option>
               </select>
+              <svg className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
             </div>
 
-            <div>
-              <input
-                type="number"
-                name="candidates"
-                value={formData.candidates}
-                onChange={handleChange}
-                placeholder="Enter No. of candidates"
-                className="w-full px-0 py-3 border-0 border-b border-gray-300 focus:ring-0 focus:border-blue-600 placeholder-gray-400"
-              />
-            </div>
+            <input
+              type="number"
+              name="candidates"
+              value={formData.candidates}
+              onChange={handleChange}
+              placeholder="Enter No. of candidates"
+              className="w-full px-0 py-1 md:py-2 border-0 border-b border-gray-300 focus:outline-none focus:border-blue-600 placeholder-gray-400 text-sm bg-transparent"
+            />
 
-            <div>
-              <select 
+            <div className="relative">
+              <select
                 name="deliveryMode"
                 value={formData.deliveryMode}
                 onChange={handleChange}
-                className="w-full px-0 py-3 border-0 border-b border-gray-300 focus:ring-0 focus:border-blue-600 text-gray-400 appearance-none bg-transparent cursor-pointer"
+                className="w-full px-0 py-1 md:py-2 border-0 border-b border-gray-300 focus:outline-none focus:border-blue-600 text-gray-400 appearance-none bg-transparent cursor-pointer text-sm"
               >
                 <option value="">Select Mode of Delivery *</option>
                 <option value="online">Online</option>
                 <option value="offline">Offline</option>
                 <option value="hybrid">Hybrid</option>
               </select>
+              <svg className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
             </div>
 
-            <div>
-              <input
-                type="text"
-                name="location"
-                value={formData.location}
-                onChange={handleChange}
-                placeholder="Eg: Gurgoan, Delhi, India"
-                className="w-full px-0 py-3 border-0 border-b border-gray-300 focus:ring-0 focus:border-blue-600 placeholder-gray-400"
-              />
-            </div>
+            <input
+              type="text"
+              name="location"
+              value={formData.location}
+              onChange={handleChange}
+              placeholder="Eg: Gurgoan, Delhi, India"
+              className="w-full px-0 py-1 md:py-2 border-0 border-b border-gray-300 focus:outline-none focus:border-blue-600 placeholder-gray-400 text-sm bg-transparent"
+            />
 
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-blue-600 text-white font-semibold py-4 rounded-lg hover:bg-blue-700 transition-colors mt-6 disabled:bg-blue-400 disabled:cursor-not-allowed"
+              className="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition-colors mt-4 disabled:bg-blue-400 disabled:cursor-not-allowed text-sm"
             >
               {isSubmitting ? 'Submitting...' : 'Submit'}
             </button>

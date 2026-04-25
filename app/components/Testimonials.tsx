@@ -50,7 +50,7 @@ export default function Testimonials() {
   );
 
   return (
-    <section id="testimonials" className="bg-white py-16 px-4">
+    <section id="testimonials" className="bg-white py-16 md:py-24 px-4">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-2">
           <span className="text-black">Testimonials from</span>{' '}

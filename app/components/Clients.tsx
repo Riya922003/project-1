@@ -4,7 +4,7 @@ import { clients } from '../data/mock';
 
 export default function Clients() {
   return (
-    <div className="bg-white py-16 px-4">
+    <div className="bg-white py-16 md:py-24 px-4">
       <div className="max-w-7xl mx-auto text-center">
         {/* Section Heading */}
         <h2 className="text-3xl font-bold">
@@ -22,10 +22,10 @@ export default function Clients() {
         <div className="hidden md:flex justify-center items-center gap-20 mt-12">
           {clients.map((client, index) => (
             <div key={index} className="flex items-center justify-center">
-              {/* Download logo from enterprise.accredian.com and save to public/images/ */}
               <img
                 src={client.logo}
-                alt={client.name}
+                alt={`${client.name} logo`}
+                loading="lazy"
                 className="h-20 object-contain grayscale-0"
               />
             </div>
@@ -37,22 +37,22 @@ export default function Clients() {
           <div className="flex animate-scroll">
             {/* First set of logos */}
             {clients.map((client, index) => (
-              <div key={`first-${index}`} className="flex-shrink-0 w-32 mx-4">
-                {/* Download logo from enterprise.accredian.com and save to public/images/ */}
+              <div key={`first-${index}`} className="shrink-0 w-32 mx-4">
                 <img
                   src={client.logo}
-                  alt={client.name}
+                  alt={`${client.name} logo`}
+                  loading="lazy"
                   className="h-12 w-full object-contain grayscale-0"
                 />
               </div>
             ))}
             {/* Duplicate set for seamless loop */}
             {clients.map((client, index) => (
-              <div key={`second-${index}`} className="flex-shrink-0 w-32 mx-4">
-                {/* Download logo from enterprise.accredian.com and save to public/images/ */}
+              <div key={`second-${index}`} className="shrink-0 w-32 mx-4">
                 <img
                   src={client.logo}
-                  alt={client.name}
+                  alt={`${client.name} logo`}
+                  loading="lazy"
                   className="h-12 w-full object-contain grayscale-0"
                 />
               </div>

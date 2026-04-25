@@ -1,17 +1,9 @@
 import Image from 'next/image';
-import { skillAudiences } from '../data/mock';
 import { MonitorCheck, MonitorX, GraduationCap, Briefcase } from 'lucide-react';
-
-const iconMap: { [key: string]: any } = {
-  'code': MonitorCheck,
-  'briefcase': Briefcase,
-  'rocket': GraduationCap,
-  'star': Briefcase,
-};
 
 export default function SkillEnhancement() {
   return (
-    <div className="bg-white py-16 px-4">
+    <div className="bg-white py-16 md:py-24 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Blue Banner */}
         <div className="bg-blue-600 rounded-2xl mx-4 md:mx-8 py-12 px-10 relative overflow-hidden">

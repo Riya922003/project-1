@@ -1,7 +1,7 @@
 import { domainExpertise } from '../data/mock';
 import { Lightbulb, Brain, Users2, ChartNoAxesColumnIncreasing, Settings, Globe, Banknote } from 'lucide-react';
 
-const iconMap: { [key: string]: any } = {
+const iconMap: Record<string, React.ComponentType<{ className?: string; strokeWidth?: number }>> = {
   'lightbulb': Lightbulb,
   'brain': Brain,
   'crown': Users2,
@@ -13,7 +13,7 @@ const iconMap: { [key: string]: any } = {
 
 export default function DomainExpertise() {
   return (
-    <div className="bg-white py-16 px-4">
+    <div className="bg-white py-16 md:py-24 px-4">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-2xl md:text-3xl font-bold text-center">
           <span className="text-black">Our </span>
@@ -72,7 +72,7 @@ export default function DomainExpertise() {
                 key={index}
                 className="bg-white border border-gray-200 rounded-xl px-3 py-3 flex flex-row items-center gap-2 shadow-sm"
               >
-                <div className="flex-shrink-0">
+                <div className="shrink-0">
                   {Icon && <Icon className="w-5 h-5 text-blue-600" strokeWidth={2.5} />}
                 </div>
                <h3 className="text-[10.5px] font-semibold text-black leading-tight text-center">
