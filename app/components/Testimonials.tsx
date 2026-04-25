@@ -19,15 +19,10 @@ export default function Testimonials() {
       quote: "Accredian's commitment to excellence is unmatched. They consistently go the extra mile to ensure our needs are met and exceeded, providing reliable support and high-quality service every step of the way."
     },
     {
-      company: "IBM",
-      logo: "/image/crousal/ibm.png",
-      quote: "The training programs delivered by Accredian have transformed our team's capabilities. Their expert guidance and innovative approach have been instrumental in achieving our organizational goals."
+      company: "Reliance",
+      logo: "/image/crousal/rel.png",
+      quote: "Choosing Accredian for the learning & development of our employees was a beneficial decision. The value derived from the course is immense & their support team is always there to help our employees."
     },
-    {
-      company: "HCL",
-      logo: "/image/crousal/hcl.png",
-      quote: "Working with Accredian has been a game-changer for our organization. Their tailored solutions and dedicated support have helped us stay ahead in the competitive landscape."
-    }
   ];
 
   useEffect(() => {
@@ -43,11 +38,22 @@ export default function Testimonials() {
   }, [isMobile]);
 
   const cardsPerSlide = isMobile ? 1 : 2;
-  const totalSlides = Math.ceil(testimonials.length / cardsPerSlide);
-  const visibleTestimonials = testimonials.slice(
-    currentSlide * cardsPerSlide,
-    currentSlide * cardsPerSlide + cardsPerSlide
-  );
+  const totalSlides = isMobile 
+    ? testimonials.length 
+    : testimonials.length - 1; // Desktop: slide one at a time, always showing 2 cards
+  
+  const visibleTestimonials = isMobile
+    ? testimonials.slice(currentSlide, currentSlide + 1)
+    : testimonials.slice(currentSlide, currentSlide + 2);
+
+  // Auto-play carousel
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % totalSlides);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [totalSlides]);
 
   return (
     <section id="testimonials" className="bg-white py-16 md:py-24 px-4">
