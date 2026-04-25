@@ -1,6 +1,8 @@
+import Image from 'next/image';
+
 export default function AccredianEdge() {
   return (
-    <div className="bg-white py-10 md:py-12 px-2">
+    <div className="bg-white py-8 md:py-12 px-2">
       <div className="max-w-7xl mx-auto">
         {/* Section Heading */}
         <h2 className="text-3xl font-bold text-center">
@@ -15,22 +17,22 @@ export default function AccredianEdge() {
         </p>
 
         {/* Desktop SVG View */}
-        <div className="hidden lg:block mt-12">
-          <img 
+        <div className="hidden lg:block mt-12 relative w-full h-[600px]">
+          <Image 
             src="/image/accredian-edge/accredian-edge-usp-v3.svg" 
             alt="Accredian Edge - Our Strategic Training Advantages"
-            loading="lazy"
-            className="w-full h-auto"
+            fill
+            className="object-contain"
           />
         </div>
 
         {/* Mobile SVG View */}
-        <div className="lg:hidden mt-12 flex justify-center">
-          <img 
+        <div className="lg:hidden mt-12 flex justify-center relative w-full h-[800px]">
+          <Image 
             src="/image/accredian-edge/accredian-edge-usp-mobile.svg" 
             alt="Accredian Edge - Our Strategic Training Advantages"
-            loading="lazy"
-            className="w-full max-w-md h-auto"
+            fill
+            className="object-contain"
           />
         </div>
       </div>

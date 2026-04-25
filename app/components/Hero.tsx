@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 interface HeroProps {
   onEnquire: () => void;
 }
@@ -12,11 +14,13 @@ export default function Hero({ onEnquire }: HeroProps) {
 
           {/* Mobile Layout */}
           <div className="flex flex-col lg:hidden">
-            <div className="w-full h-64 overflow-hidden">
-              <img
+            <div className="w-full h-64 relative overflow-hidden">
+              <Image
                 src="/image/corporate-big-hero-v4.webp"
                 alt="Enterprise professionals"
-                className="w-full h-full object-cover object-top"
+                fill
+                className="object-cover object-top"
+                priority
               />
             </div>
 
@@ -94,11 +98,14 @@ export default function Hero({ onEnquire }: HeroProps) {
               </button>
             </div>
 
-            <div className="w-[48%] flex items-end justify-center">
-              <img
+            <div className="w-[48%] flex items-end justify-center relative">
+              <Image
                 src="/image/corporate-big-hero-v4.webp"
                 alt="Enterprise professionals"
-                className="h-[460px] w-full object-contain object-bottom"
+                width={600}
+                height={460}
+                className="object-contain object-bottom"
+                priority
               />
             </div>
 

@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { clients } from '../data/mock';
 
 export default function Clients() {
@@ -21,12 +22,12 @@ export default function Clients() {
         {/* Desktop Logo Row */}
         <div className="hidden md:flex justify-center items-center gap-20 mt-12">
           {clients.map((client, index) => (
-            <div key={index} className="flex items-center justify-center">
-              <img
+            <div key={index} className="flex items-center justify-center relative h-20 w-32">
+              <Image
                 src={client.logo}
                 alt={`${client.name} logo`}
-                loading="lazy"
-                className="h-20 object-contain grayscale-0"
+                fill
+                className="object-contain grayscale-0"
               />
             </div>
           ))}
@@ -37,23 +38,23 @@ export default function Clients() {
           <div className="flex animate-scroll">
             {/* First set of logos */}
             {clients.map((client, index) => (
-              <div key={`first-${index}`} className="shrink-0 w-32 mx-4">
-                <img
+              <div key={`first-${index}`} className="shrink-0 w-32 h-12 mx-4 relative">
+                <Image
                   src={client.logo}
                   alt={`${client.name} logo`}
-                  loading="lazy"
-                  className="h-12 w-full object-contain grayscale-0"
+                  fill
+                  className="object-contain grayscale-0"
                 />
               </div>
             ))}
             {/* Duplicate set for seamless loop */}
             {clients.map((client, index) => (
-              <div key={`second-${index}`} className="shrink-0 w-32 mx-4">
-                <img
+              <div key={`second-${index}`} className="shrink-0 w-32 h-12 mx-4 relative">
+                <Image
                   src={client.logo}
                   alt={`${client.name} logo`}
-                  loading="lazy"
-                  className="h-12 w-full object-contain grayscale-0"
+                  fill
+                  className="object-contain grayscale-0"
                 />
               </div>
             ))}
