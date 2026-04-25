@@ -6,7 +6,7 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Accredian Enterprise | Next-Gen Expertise For Your Enterprise',
   description: 'Cultivate high-performance teams through expert learning. Tailored corporate training solutions by Accredian.',
   keywords: 'corporate training, enterprise learning, upskilling, L&D, Accredian',
