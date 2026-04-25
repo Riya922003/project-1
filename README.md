@@ -101,20 +101,6 @@ app/
 - **Spacing**: Consistent `py-8 md:py-12` section padding
 - **Components**: Rounded corners (`rounded-xl`, `rounded-2xl`), subtle shadows
 
-## AI Usage
-
-### AI-Assisted Development
-
-- Used **Kiro (Claude Sonnet 4.5)** to scaffold all component structures and Tailwind class combinations
-- AI generated initial layouts, responsive breakpoints, and component boilerplate
-- Manually verified and adjusted:
-  - Spacing and padding values
-  - Responsive breakpoints (mobile/tablet/desktop)
-  - Color values (`#2563EB` blue, gray shades)
-  - Section ordering and content hierarchy
-  - Typography sizing and font weights
-  - Image paths and asset references
-
 ### Manual Review & Testing
 
 - API route logic (validation, file I/O, error handling) reviewed and tested manually
