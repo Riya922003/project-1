@@ -28,12 +28,12 @@ export const stats = [
 
 // Client Companies
 export const clients = [
-  { name: "Reliance Industries Limited", logo: "/images/reliance.png" },
-  { name: "HCL", logo: "/images/hcl.png" },
-  { name: "IBM", logo: "/images/ibm.png" },
-  { name: "CRIF", logo: "/images/crif.png" },
-  { name: "ADP", logo: "/images/adp.png" },
-  { name: "Bayer", logo: "/images/bayer.png" }
+  { name: "Reliance Industries Limited", logo: "/image/crousal/rel.png" },
+  { name: "HCL", logo: "/image/crousal/hcl.png" },
+  { name: "IBM", logo: "/image/crousal/ibm.png" },
+  { name: "CRIF", logo: "/image/crousal/crif.png" },
+  { name: "ADP", logo: "/image/crousal/adp.svg" },
+  { name: "Bayer", logo: "/image/crousal/bayer.svg" }
 ];
 
 // Accredian Edge Features
