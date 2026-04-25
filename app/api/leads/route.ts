@@ -1,45 +1,65 @@
 import { NextRequest, NextResponse } from 'next/server';
+import fs from 'fs';
+import path from 'path';
 
 export async function POST(request: NextRequest) {
   try {
+    // Parse JSON body
     const body = await request.json();
-    
+    const { name, email, phone, company, domain, candidates, deliveryMode, location } = body;
+
     // Validate required fields
-    const { name, email, phone, company, message } = body;
-    
-    if (!name || !email) {
+    if (!name || !email || !company) {
       return NextResponse.json(
-        { error: 'Name and email are required' },
+        { success: false, message: 'Name, email, and company are required' },
         { status: 400 }
       );
     }
 
-    // Here you would typically:
-    // 1. Save to database
-    // 2. Send email notification
-    // 3. Integrate with CRM
-    
-    // For now, just return success
+    // Define path to leads.json
+    const dataDir = path.join(process.cwd(), 'data');
+    const filePath = path.join(dataDir, 'leads.json');
+
+    // Ensure data directory exists
+    if (!fs.existsSync(dataDir)) {
+      fs.mkdirSync(dataDir, { recursive: true });
+    }
+
+    // Read existing leads or create empty array
+    let leads = [];
+    if (fs.existsSync(filePath)) {
+      const fileContent = fs.readFileSync(filePath, 'utf-8');
+      leads = JSON.parse(fileContent);
+    }
+
+    // Create new lead with timestamp
+    const newLead = {
+      name,
+      email,
+      phone: phone || '',
+      company,
+      domain: domain || '',
+      candidates: candidates || '',
+      deliveryMode: deliveryMode || '',
+      location: location || '',
+      createdAt: new Date().toISOString(),
+    };
+
+    // Append new lead
+    leads.push(newLead);
+
+    // Write back to file
+    fs.writeFileSync(filePath, JSON.stringify(leads, null, 2), 'utf-8');
+
     return NextResponse.json(
-      { 
-        success: true, 
-        message: 'Lead submitted successfully',
-        data: { name, email }
-      },
+      { success: true, message: 'Lead captured' },
       { status: 200 }
     );
   } catch (error) {
     console.error('Error processing lead:', error);
     return NextResponse.json(
-      { error: 'Failed to process lead submission' },
+      { success: false, message: 'Internal server error' },
       { status: 500 }
     );
   }
-}
-
-export async function GET() {
-  return NextResponse.json(
-    { message: 'Leads API endpoint' },
-    { status: 200 }
-  );
 }
