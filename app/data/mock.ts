@@ -173,33 +173,38 @@ export const faqCategories = [
 export const faqs = [
   {
     category: "About the Course",
-    question: "What types of courses do you offer for enterprise training?",
-    answer: "We offer a comprehensive range of courses including technical skills, leadership development, digital transformation, data science, project management, and industry-specific training programs. All courses are customized to meet your organization's specific needs and objectives."
+    question: "What types of corporate training programs does Accredian offer?",
+    answer: "Accredian provides industry-specific, customizable training programs tailored to meet your organization's unique needs, covering domains like leadership, tech, data, and fintech."
   },
   {
     category: "About the Course",
-    question: "How do you ensure the course content is relevant to our industry?",
-    answer: "Our expert team conducts thorough industry analysis and works closely with your organization to understand specific challenges and requirements. We customize all content to reflect real-world scenarios and use cases relevant to your industry and business context."
+    question: "What domain specialisations are available?",
+    answer: "We offer expertise in various domains, including Leadership Development, Tech & Data, Fintech, Digital Business, Product Innovation, Operations Management, and Generative AI."
   },
   {
     category: "About the Delivery",
-    question: "What delivery formats are available for corporate training?",
-    answer: "We offer flexible delivery options including online live sessions, self-paced e-learning, in-person workshops, and hybrid models. You can choose the format that best suits your team's schedule, location, and learning preferences."
+    question: "Can the courses be customised for specific industry or terms?",
+    answer: "Absolutely! Our programs are fully customizable, including content, format, timing, and industry-specific focus, to align with your organization's goals."
   },
   {
     category: "About the Delivery",
-    question: "Can you accommodate different time zones for global teams?",
-    answer: "Yes, we provide training sessions across multiple time zones to accommodate global teams. We can schedule sessions at convenient times for different regions and provide recorded sessions for those who cannot attend live training."
+    question: "What format are the programs delivered in?",
+    answer: "Programs can be delivered in various formats, including online, offline, hybrid, and on-demand, based on your team's preferences and requirements."
+  },
+  {
+    category: "About the Delivery",
+    question: "Who are the instructors of these programs?",
+    answer: "Our courses are delivered by industry leaders, experienced mentors, and domain experts with real-world insights."
   },
   {
     category: "Miscellaneous",
-    question: "How do you measure the success and ROI of training programs?",
-    answer: "We use comprehensive assessment methods including pre and post-training evaluations, skill assessments, project-based outcomes, and long-term performance tracking. We provide detailed analytics and reports to demonstrate measurable improvements and ROI."
+    question: "What is the ideal team size for corporate training?",
+    answer: "Our programs are flexible and can cater to teams of any size, from small groups to large organizational cohorts."
   },
   {
     category: "Miscellaneous",
-    question: "What support is provided after the training completion?",
-    answer: "We offer ongoing support including access to learning materials, follow-up sessions, mentoring opportunities, and a community platform for continued learning. Our support team is available to address any questions or challenges that arise post-training."
+    question: "How do we get started with Accredian?",
+    answer: "Get started with Accredian by contacting us or requesting a quote on our website. Our team will guide you through the process—from skill gap analysis to a custom program tailored to your needs."
   }
 ];
 
