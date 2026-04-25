@@ -76,7 +76,7 @@ export default function Testimonials() {
               <div className="mb-4">
                 <Image
                   src={testimonial.logo}
-                  alt={testimonial.company}
+                  alt={`${testimonial.company} - Trusted partner in corporate training and professional development`}
                   width={50}
                   height={50}
                   className="h-12 object-contain"

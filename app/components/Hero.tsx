@@ -17,7 +17,7 @@ export default function Hero({ onEnquire }: HeroProps) {
             <div className="w-full h-64 relative overflow-hidden">
               <Image
                 src="/image/corporate-big-hero-v4.webp"
-                alt="Enterprise professionals"
+                alt="Professional business team collaborating in modern corporate environment"
                 fill
                 className="object-cover object-top"
                 priority
@@ -101,7 +101,7 @@ export default function Hero({ onEnquire }: HeroProps) {
             <div className="w-[48%] flex items-end justify-center relative">
               <Image
                 src="/image/corporate-big-hero-v4.webp"
-                alt="Enterprise professionals"
+                alt="Professional business team collaborating in modern corporate environment"
                 width={600}
                 height={460}
                 className="object-contain object-bottom"

@@ -25,7 +25,7 @@ export default function Clients() {
             <div key={index} className="flex items-center justify-center relative h-20 w-32">
               <Image
                 src={client.logo}
-                alt={`${client.name} logo`}
+                alt={`${client.name} - Leading enterprise partner for corporate training solutions`}
                 fill
                 className="object-contain grayscale-0"
               />
@@ -41,7 +41,7 @@ export default function Clients() {
               <div key={`first-${index}`} className="shrink-0 w-32 h-12 mx-4 relative">
                 <Image
                   src={client.logo}
-                  alt={`${client.name} logo`}
+                  alt={`${client.name} - Leading enterprise partner for corporate training solutions`}
                   fill
                   className="object-contain grayscale-0"
                 />
@@ -52,7 +52,7 @@ export default function Clients() {
               <div key={`second-${index}`} className="shrink-0 w-32 h-12 mx-4 relative">
                 <Image
                   src={client.logo}
-                  alt={`${client.name} logo`}
+                  alt={`${client.name} - Leading enterprise partner for corporate training solutions`}
                   fill
                   className="object-contain grayscale-0"
                 />

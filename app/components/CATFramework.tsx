@@ -21,7 +21,7 @@ export default function CATFramework() {
           <div className="relative w-full max-w-4xl">
             <Image
               src="/image/catV2.svg"
-              alt="CAT Framework - Concept, Application, Tools"
+              alt="CAT Framework diagram showing Concept, Application, and Tools methodology for effective corporate training"
               width={800}
               height={300}
               className="w-full h-auto"

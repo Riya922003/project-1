@@ -34,7 +34,7 @@ export default function CourseSegmentation() {
               <div className="relative w-full h-40">
                 <Image
                   src={segment.image}
-                  alt={segment.title}
+                  alt={`${segment.title} - ${segment.description}`}
                   fill
                   className="object-cover"
                 />
@@ -71,7 +71,7 @@ export default function CourseSegmentation() {
                     <div className="relative w-full h-48">
                       <Image
                         src={segment.image}
-                        alt={segment.title}
+                        alt={`${segment.title} - ${segment.description}`}
                         fill
                         className="object-cover"
                       />

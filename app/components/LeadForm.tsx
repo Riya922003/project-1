@@ -75,7 +75,7 @@ export default function LeadForm({ isOpen, onClose }: LeadFormProps) {
         <div className="hidden md:block w-[45%] relative min-h-[600px]">
           <Image
             src="/image/business-v2.webp"
-            alt="Business professionals"
+            alt="Business professionals discussing corporate training solutions in modern office setting"
             fill
             className="object-cover"
           />

@@ -63,7 +63,7 @@ export default function SkillEnhancement() {
             <div className="relative w-80 h-64">
               <Image
                 src="/image/imagehuman.png"
-                alt="Strategic Skill Enhancement"
+                alt="Professional development and skill enhancement through expert-led corporate training programs"
                 fill
                 className="object-contain object-bottom"
               />

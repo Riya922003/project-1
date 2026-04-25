@@ -20,7 +20,7 @@ export default function AccredianEdge() {
         <div className="hidden lg:block mt-12 relative w-full h-[600px]">
           <Image 
             src="/image/accredian-edge/accredian-edge-usp-v3.svg" 
-            alt="Accredian Edge - Our Strategic Training Advantages"
+            alt="Accredian Edge infographic showcasing key strategic training advantages including customized programs, expert instructors, and measurable outcomes"
             fill
             className="object-contain"
           />
@@ -30,7 +30,7 @@ export default function AccredianEdge() {
         <div className="lg:hidden mt-12 flex justify-center relative w-full h-[800px]">
           <Image 
             src="/image/accredian-edge/accredian-edge-usp-mobile.svg" 
-            alt="Accredian Edge - Our Strategic Training Advantages"
+            alt="Accredian Edge infographic showcasing key strategic training advantages including customized programs, expert instructors, and measurable outcomes"
             fill
             className="object-contain"
           />
