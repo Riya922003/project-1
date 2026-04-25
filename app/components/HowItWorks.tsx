@@ -47,7 +47,7 @@ export default function HowItWorks() {
                <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-1/2 bg-blue-600 rounded-full" />
 
                 {/* Card */}
-                <div className="bg-blue-50 border border-blue-100 rounded-2xl px-4 pt-4 pb-12 flex flex-col items-center">
+                <div className="bg-blue-50 border border-blue-100 rounded-2xl px-2 pt-3 pb-8 md:px-4 md:pt-4 md:pb-12 flex flex-col items-center">
                 {/* Step number */}
                 <div className="self-start w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center text-gray-500 text-xs font-semibold mb-3">
                     {step.step}
