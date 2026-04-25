@@ -83,23 +83,23 @@ export const domainExpertise = [
 export const courseSegments = [
   {
     title: "Program Specific",
-    description: "Structured learning programs designed for specific career paths and professional development goals",
-    image: "/image/program-specific.webp"
+    description: "Certificate, Executive, Post Graduate Certificate",
+    image: "/image/course/1.webp"
   },
   {
     title: "Industry Specific",
-    description: "Tailored content addressing unique challenges and requirements of specific industries and sectors",
-    image: "/image/industry-specific.webp"
+    description: "IT, Healthcare, Retail, Finance, Education, Manufacturing",
+    image: "/image/course/2.webp"
   },
   {
     title: "Topic Specific",
-    description: "Focused modules covering specialized topics and emerging technologies in depth",
-    image: "/image/topic-specific.webp"
+    description: "Machine Learning, Design, Analytics, Cybersecurity, Cloud",
+    image: "/image/course/3.webp"
   },
   {
     title: "Level Specific",
-    description: "Courses designed for different experience levels from beginners to advanced professionals",
-    image: "/image/level-specific.webp"
+    description: "Senior Leadership, Mid-Career Professionals, Freshers",
+    image: "/image/course/4.webp"
   }
 ];
 
