@@ -60,10 +60,10 @@ export default function Hero() {
           </div>
 
           {/* Desktop Layout */}
-          <div className="hidden lg:flex flex-row min-h-[460px]">
+          <div className="hidden lg:flex flex-row min-h-[500px]">
 
-            <div className="w-[52%] py-16 pl-16 pr-4 flex flex-col justify-center">
-               <h1 className="text-4xl xl:text-5xl font-bold leading-tight">
+            <div className="w-[52%] py-16 pl-20 pr-4 flex flex-col justify-center">
+               <h1 className="text-6xl xl:text-5xl font-bold leading-tight">
                 <span className="text-black">Next-Gen </span>
                 <span className="text-blue-600">Expertise</span>
                 <br />

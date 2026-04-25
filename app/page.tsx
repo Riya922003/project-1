@@ -11,7 +11,6 @@ import HowItWorks from "./components/HowItWorks";
 import FAQ from "./components/FAQ";
 import Testimonials from "./components/Testimonials";
 import ContactBanner from "./components/ContactBanner";
-import LeadForm from "./components/LeadForm";
 import Footer from "./components/Footer";
 
 export default function Home() {
@@ -58,8 +57,6 @@ export default function Home() {
       </section>
 
       <ContactBanner />
-
-      <LeadForm />
 
       <Footer />
     </>
