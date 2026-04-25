@@ -4,22 +4,66 @@ export default function Hero() {
   const handleEnquireClick = () => {
     const faqsSection = document.getElementById('faqs');
     if (faqsSection) {
-      faqsSection.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
+      faqsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
   return (
-    <div className="bg-slate-50 py-16 px-4 md:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="bg-slate-100 rounded-2xl py-12 px-10">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            {/* Left Content - 60% width on desktop */}
-            <div className="flex-1 lg:w-3/5">
-              {/* Main Heading */}
-              <h1 className="text-4xl md:text-5xl font-bold leading-tight">
+    <div className="bg-slate-50 py-4 px-6 md:px-10">
+      <div className="max-w-[1200px] mx-auto">
+        <div className="bg-[#E8EEF7] rounded-2xl overflow-hidden shadow-md">
+
+          {/* Mobile Layout */}
+          <div className="flex flex-col lg:hidden">
+            <div className="w-full h-64 overflow-hidden">
+              <img
+                src="/image/corporate-big-hero-v4.webp"
+                alt="Enterprise professionals"
+                className="w-full h-full object-cover object-top"
+              />
+            </div>
+
+            <div className="px-6 py-8 text-center">
+              <h1 className="text-3xl font-bold leading-tight">
+                <span className="text-black">Next-Gen </span>
+                <span className="text-blue-600">Expertise</span>
+                <span className="text-black"> For</span>
+                <br />
+                <span className="text-black">Your </span>
+                <span className="text-blue-600">Enterprise</span>
+              </h1>
+
+              <p className="text-sm text-gray-700 mt-4 leading-relaxed text-center">
+                Cultivate high-performance teams through expert learning.
+              </p>
+
+              <div className="grid grid-cols-2 gap-3 mt-5 text-left">
+                {['Tailored Solutions', 'Industry Insights', 'Expert Guidance', 'Measurable Impact'].map((label) => (
+                  <div key={label} className="flex items-start gap-2">
+                    <span className="inline-flex items-center justify-center w-5 h-5 rounded-full border-2 border-green-500 text-green-500 flex-shrink-0 mt-0.5">
+                      <svg viewBox="0 0 12 12" fill="none" className="w-3 h-3">
+                        <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </span>
+                    <span className="text-gray-700 text-sm font-medium">{label}</span>
+                  </div>
+                ))}
+              </div>
+
+              <button
+                onClick={handleEnquireClick}
+                className="mt-6 w-full bg-blue-600 hover:bg-blue-700 py-3 rounded-lg text-white font-semibold text-base transition-colors duration-200"
+              >
+                Enquire Now
+              </button>
+            </div>
+          </div>
+
+          {/* Desktop Layout */}
+          <div className="hidden lg:flex flex-row min-h-[460px]">
+
+            <div className="w-[52%] py-16 pl-16 pr-4 flex flex-col justify-center">
+               <h1 className="text-4xl xl:text-5xl font-bold leading-tight">
                 <span className="text-black">Next-Gen </span>
                 <span className="text-blue-600">Expertise</span>
                 <br />
@@ -27,62 +71,40 @@ export default function Hero() {
                 <span className="text-blue-600">Enterprise</span>
               </h1>
 
-              {/* Subheading */}
-              <p className="text-lg text-gray-600 mt-4">
-                Cultivate high-performance teams through expert learning.
+              <p className="text-lg text-gray-700 mt-6 leading-relaxed">
+                Cultivate high-performance<br />
+                teams through expert learning.
               </p>
 
-              {/* Checkmarks Row */}
-              <div className="flex flex-col sm:flex-row gap-4 mt-6">
-                <div className="flex items-center gap-2">
-                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
-                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
+              <div className="flex flex-row gap-6 mt-6">
+                {['Tailored Solutions', 'Industry Insights', 'Expert Guidance'].map((label) => (
+                  <div key={label} className="flex items-center gap-2">
+                    <span className="inline-flex items-center justify-center w-5 h-5 rounded-full border-2 border-green-500 text-green-500 flex-shrink-0">
+                      <svg viewBox="0 0 12 12" fill="none" className="w-3 h-3">
+                        <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </span>
+                    <span className="text-gray-700 text-sm font-medium">{label}</span>
                   </div>
-                  <span className="text-gray-700 font-medium">Tailored Solutions</span>
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
-                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <span className="text-gray-700 font-medium">Industry Insights</span>
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
-                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <span className="text-gray-700 font-medium">Expert Guidance</span>
-                </div>
+                ))}
               </div>
 
-              {/* Enquire Now Button */}
               <button
                 onClick={handleEnquireClick}
-                className="bg-blue-600 text-white rounded-lg px-8 py-3 mt-8 hover:bg-blue-700 transition-colors duration-200 font-medium"
+                className="mt-8 w-fit bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg text-white font-semibold text-base transition-colors duration-200"
               >
                 Enquire Now
               </button>
             </div>
 
-            {/* Right Image - 40% width on desktop */}
-            <div className="flex-1 lg:w-2/5 hidden lg:block">
-              {/* Replace with actual hero image from /images/hero.png */}
-              <div className="bg-blue-50 rounded-xl h-96 flex items-center justify-center">
-                <div className="text-center text-gray-400">
-                  <svg className="w-16 h-16 mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
-                  </svg>
-                  <p className="text-sm">Hero Image Placeholder</p>
-                </div>
-              </div>
+            <div className="w-[48%] flex items-end justify-center">
+              <img
+                src="/image/corporate-big-hero-v4.webp"
+                alt="Enterprise professionals"
+                className="h-[460px] w-full object-contain object-bottom"
+              />
             </div>
+
           </div>
         </div>
       </div>
