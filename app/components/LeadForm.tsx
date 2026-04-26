@@ -54,7 +54,7 @@ const INPUT_CLASS =
   'w-full px-0 py-2 border-0 border-b border-gray-300 focus:outline-none focus:border-blue-600 placeholder-gray-400 text-sm bg-transparent';
 
 const SELECT_CLASS =
-  'w-full px-0 py-2 border-0 border-b border-gray-300 focus:outline-none focus:border-blue-600 text-gray-400 appearance-none bg-transparent cursor-pointer text-sm';
+  'w-full px-0 py-2 border-0 border-b border-gray-300 focus:outline-none focus:border-blue-600 appearance-none bg-transparent cursor-pointer text-sm';
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
@@ -235,11 +235,11 @@ export default function LeadForm({ isOpen, onClose }: LeadFormProps) {
                 name="domain"
                 value={formData.domain}
                 onChange={handleChange}
-                className={SELECT_CLASS}
+                className={`${SELECT_CLASS} ${formData.domain ? 'text-black' : 'text-gray-400'}`}
               >
-                <option value="">Select Domain</option>
+                <option value="" className="text-gray-400">Select Domain</option>
                 {DOMAIN_OPTIONS.map(({ value, label }) => (
-                  <option key={value} value={value}>{label}</option>
+                  <option key={value} value={value} className="text-black">{label}</option>
                 ))}
               </select>
               <ChevronDownIcon />
@@ -261,11 +261,11 @@ export default function LeadForm({ isOpen, onClose }: LeadFormProps) {
                 name="deliveryMode"
                 value={formData.deliveryMode}
                 onChange={handleChange}
-                className={SELECT_CLASS}
+                className={`${SELECT_CLASS} ${formData.deliveryMode ? 'text-black' : 'text-gray-400'}`}
               >
-                <option value="">Select Mode of Delivery</option>
+                <option value="" className="text-gray-400">Select Mode of Delivery</option>
                 {DELIVERY_OPTIONS.map(({ value, label }) => (
-                  <option key={value} value={value}>{label}</option>
+                  <option key={value} value={value} className="text-black">{label}</option>
                 ))}
               </select>
               <ChevronDownIcon />

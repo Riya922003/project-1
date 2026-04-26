@@ -154,7 +154,6 @@ app/
 
 ## AI Usage
 
-- Used **Kiro (Claude Sonnet 4.5)** to scaffold all component structures and Tailwind class combinations
 - Manually verified and adjusted: spacing, responsive breakpoints, color values, section ordering, and typography sizing to match the reference site
 - API route logic (validation, file I/O, error handling) reviewed and tested manually
 - All content in `app/data/mock.ts` was manually verified against the actual site screenshots
