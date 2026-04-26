@@ -1,45 +1,87 @@
 'use client';
 
 import { useState } from 'react';
+import { ChevronDown, ChevronUp, ChevronLeft, ChevronRight } from 'lucide-react';
 import { faqCategories, faqs } from '../data/mock';
-import { ChevronDown, ChevronUp } from 'lucide-react';
 
 interface FAQProps {
   onEnquire: () => void;
 }
 
+interface FaqItemProps {
+  question: string;
+  answer: string;
+  isOpen: boolean;
+  onToggle: () => void;
+}
+
+function FaqItem({ question, answer, isOpen, onToggle }: FaqItemProps) {
+  return (
+    <div className="border-b border-gray-100 pb-4">
+      <button
+        onClick={onToggle}
+        className="w-full flex items-center justify-between py-3 text-left"
+        aria-expanded={isOpen}
+      >
+        <h3 className="font-semibold text-gray-800 flex-1">{question}</h3>
+        {isOpen
+          ? <ChevronUp className="w-5 h-5 text-gray-600 shrink-0" />
+          : <ChevronDown className="w-5 h-5 text-gray-600 shrink-0" />
+        }
+      </button>
+      {isOpen && (
+        <p className="text-gray-500 text-sm mt-2 pb-2">{answer}</p>
+      )}
+    </div>
+  );
+}
+
 export default function FAQ({ onEnquire }: FAQProps) {
-  const [activeCategory, setActiveCategory] = useState('About the Course');
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [activeCategory, setActiveCategory] = useState(faqCategories[0]);
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [categorySlideIndex, setCategorySlideIndex] = useState(0);
 
-  const filteredFaqs = faqs.filter(faq => faq.category === activeCategory);
+  const filteredFaqs = faqs.filter((faq) => faq.category === activeCategory);
 
-  const toggleFaq = (index: number) => {
-    setOpenFaq(openFaq === index ? null : index);
+  const handleCategoryChange = (category: string, index: number) => {
+    setActiveCategory(category);
+    setCategorySlideIndex(index);
+    setOpenFaqIndex(null); // reset open FAQ when switching category
+  };
+
+  const handleSlideBack = () => {
+    const newIndex = Math.max(0, categorySlideIndex - 1);
+    handleCategoryChange(faqCategories[newIndex], newIndex);
+  };
+
+  const handleSlideForward = () => {
+    const newIndex = Math.min(faqCategories.length - 1, categorySlideIndex + 1);
+    handleCategoryChange(faqCategories[newIndex], newIndex);
   };
 
   return (
-    <div className="bg-white py-12 md:py-20 px-4">
+    <section className="bg-white py-12 md:py-20 px-4">
       <div className="max-w-7xl mx-auto">
+
         {/* Heading */}
         <h2 className="text-3xl font-bold mb-12">
           <span className="text-black">Frequently Asked </span>
           <span className="text-blue-600">Questions</span>
         </h2>
 
-        {/* Desktop Layout */}
+        {/* Desktop layout */}
         <div className="hidden md:grid md:grid-cols-3 gap-8">
-          {/* Left Column - Categories */}
+
+          {/* Category list */}
           <div className="flex flex-col gap-4">
             {faqCategories.map((category) => (
               <button
                 key={category}
-                onClick={() => setActiveCategory(category)}
+                onClick={() => handleCategoryChange(category, faqCategories.indexOf(category))}
                 className={`w-full border border-gray-200 rounded-xl px-6 py-4 text-left transition-all ${
                   activeCategory === category
-                    ? 'text-blue-600 font-semibold shadow-sm bg-white'
-                    : 'text-gray-500 bg-white hover:bg-gray-50'
+                    ? 'text-blue-600 font-semibold shadow-sm'
+                    : 'text-gray-500 hover:bg-gray-50'
                 }`}
               >
                 {category}
@@ -47,65 +89,45 @@ export default function FAQ({ onEnquire }: FAQProps) {
             ))}
           </div>
 
-          {/* Right Column - FAQ Items */}
-          <div className="md:col-span-2">
-            <div className="space-y-4">
-              {filteredFaqs.map((faq, index) => (
-                <div key={index} className="border-b border-gray-100 pb-4">
-                  <button
-                    onClick={() => toggleFaq(index)}
-                    className="w-full flex items-center justify-between py-3 text-left"
-                  >
-                    <h3 className="font-semibold text-gray-800 flex-1">
-                      {faq.question}
-                    </h3>
-                    {openFaq === index ? (
-                      <ChevronUp className="w-5 h-5 text-gray-600 flex-shrink-0" />
-                    ) : (
-                      <ChevronDown className="w-5 h-5 text-gray-600 flex-shrink-0" />
-                    )}
-                  </button>
-                  {openFaq === index && (
-                    <p className="text-gray-500 text-sm mt-2 pb-2">
-                      {faq.answer}
-                    </p>
-                  )}
-                </div>
-              ))}
-            </div>
+          {/* FAQ accordion */}
+          <div className="md:col-span-2 space-y-4">
+            {filteredFaqs.map((faq, index) => (
+              <FaqItem
+                key={faq.question}
+                question={faq.question}
+                answer={faq.answer}
+                isOpen={openFaqIndex === index}
+                onToggle={() => setOpenFaqIndex(openFaqIndex === index ? null : index)}
+              />
+            ))}
           </div>
+
         </div>
 
-        {/* Mobile Layout */}
+        {/* Mobile layout */}
         <div className="md:hidden">
-          {/* Category Slider */}
+
+          {/* Category slider */}
           <div className="flex items-center gap-3 mb-8">
             <button
-              onClick={() => {
-                const newIndex = Math.max(0, categorySlideIndex - 1);
-                setCategorySlideIndex(newIndex);
-                setActiveCategory(faqCategories[newIndex]);
-              }}
-              className="p-2 text-gray-600 hover:text-gray-800"
+              onClick={handleSlideBack}
+              disabled={categorySlideIndex === 0}
+              aria-label="Previous category"
+              className="p-2 text-gray-600 hover:text-gray-800 disabled:opacity-30"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
+              <ChevronLeft className="w-6 h-6" />
             </button>
 
             <div className="flex-1 overflow-x-auto scrollbar-hide">
               <div className="flex gap-3 pb-2">
-                {faqCategories.map((category, idx) => (
+                {faqCategories.map((category, index) => (
                   <button
                     key={category}
-                    onClick={() => {
-                      setActiveCategory(category);
-                      setCategorySlideIndex(idx);
-                    }}
-                    className={`px-5 py-3 rounded-xl whitespace-nowrap font-medium transition-all flex-shrink-0 ${
+                    onClick={() => handleCategoryChange(category, index)}
+                    className={`px-5 py-3 rounded-xl whitespace-nowrap font-medium transition-all shrink-0 ${
                       activeCategory === category
                         ? 'bg-blue-600 text-white shadow-sm'
-                        : 'border border-gray-200 text-gray-600 bg-white'
+                        : 'border border-gray-200 text-gray-600'
                     }`}
                   >
                     {category}
@@ -115,56 +137,41 @@ export default function FAQ({ onEnquire }: FAQProps) {
             </div>
 
             <button
-              onClick={() => {
-                const newIndex = Math.min(faqCategories.length - 1, categorySlideIndex + 1);
-                setCategorySlideIndex(newIndex);
-                setActiveCategory(faqCategories[newIndex]);
-              }}
-              className="p-2 text-gray-600 hover:text-gray-800"
+              onClick={handleSlideForward}
+              disabled={categorySlideIndex === faqCategories.length - 1}
+              aria-label="Next category"
+              className="p-2 text-gray-600 hover:text-gray-800 disabled:opacity-30"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
+              <ChevronRight className="w-6 h-6" />
             </button>
           </div>
 
-          {/* FAQ Items */}
+          {/* FAQ accordion */}
           <div className="space-y-4">
             {filteredFaqs.map((faq, index) => (
-              <div key={index} className="border-b border-gray-100 pb-4">
-                <button
-                  onClick={() => toggleFaq(index)}
-                  className="w-full flex items-center justify-between py-3 text-left"
-                >
-                  <h3 className="font-semibold text-gray-800 flex-1">
-                    {faq.question}
-                  </h3>
-                  {openFaq === index ? (
-                    <ChevronUp className="w-5 h-5 text-gray-600 flex-shrink-0" />
-                  ) : (
-                    <ChevronDown className="w-5 h-5 text-gray-600 flex-shrink-0" />
-                  )}
-                </button>
-                {openFaq === index && (
-                  <p className="text-gray-500 text-sm mt-2 pb-2">
-                    {faq.answer}
-                  </p>
-                )}
-              </div>
+              <FaqItem
+                key={faq.question}
+                question={faq.question}
+                answer={faq.answer}
+                isOpen={openFaqIndex === index}
+                onToggle={() => setOpenFaqIndex(openFaqIndex === index ? null : index)}
+              />
             ))}
           </div>
+
         </div>
 
-        {/* Enquire Now Button */}
+        {/* CTA */}
         <div className="flex justify-center mt-12">
-          <button 
+          <button
             onClick={onEnquire}
             className="bg-blue-600 text-white px-10 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
           >
             Enquire Now
           </button>
         </div>
+
       </div>
-    </div>
+    </section>
   );
 }

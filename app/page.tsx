@@ -16,6 +16,7 @@ import Testimonials from "./components/Testimonials";
 import ContactBanner from "./components/ContactBanner";
 import LeadForm from "./components/LeadForm";
 import Footer from "./components/Footer";
+import BackToTop from "./components/BackToTop";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -78,6 +79,7 @@ export default function Home() {
       <ContactBanner onEnquire={() => setIsModalOpen(true)} />
       <Footer onEnquire={() => setIsModalOpen(true)} />
       <LeadForm isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <BackToTop />
     </>
   );
 }
