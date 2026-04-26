@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { navLinks } from '../data/mock';
 
 export default function Navbar() {
@@ -68,10 +69,15 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex-shrink-0">
-            <div className="flex flex-col">
-              <span className="text-xl font-bold text-blue-600">accredian</span>
-              <span className="text-xs text-gray-500 -mt-1">credentials that matter</span>
+          <div className="shrink-0">
+            <div className="relative w-32 h-10">
+              <Image
+                src="/image/logo.webp"
+                alt="Accredian - Credentials that matter"
+                fill
+                className="object-contain object-left"
+                priority
+              />
             </div>
           </div>
 
@@ -104,25 +110,72 @@ export default function Navbar() {
               className="text-gray-600 hover:text-blue-600 focus:outline-none focus:text-blue-600 p-2"
               aria-label="Toggle mobile menu"
             >
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
+              {isMobileMenuOpen ? (
+                <svg className="w-8 h-8 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg 
+                  stroke="currentColor" 
+                  fill="none" 
+                  strokeWidth="2" 
+                  viewBox="0 0 24 24" 
+                  aria-hidden="true" 
+                  className="w-8 h-8 text-black cursor-pointer" 
+                  height="1em" 
+                  width="1em" 
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+              )}
             </button>
           </div>
         </div>
+      </div>
 
-        {/* Mobile Navigation Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-100">
+      {/* Mobile Navigation Overlay */}
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 z-50 md:hidden">
+          {/* Backdrop */}
+          <div 
+            className="absolute inset-0 bg-black bg-opacity-50"
+            onClick={() => setIsMobileMenuOpen(false)}
+          ></div>
+          
+          {/* Slide-in Menu */}
+          <div className="absolute top-0 right-0 bottom-0 w-80 bg-white shadow-xl transform transition-transform duration-300 ease-in-out">
+            {/* Header with Logo and Close Button */}
+            <div className="flex justify-between items-center p-4 border-b border-gray-100">
+              <div className="relative w-32 h-10">
+                <Image
+                  src="/image/logo.webp"
+                  alt="Accredian - Credentials that matter"
+                  fill
+                  className="object-contain object-left"
+                />
+              </div>
+              <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="p-2 text-gray-600 hover:text-blue-600"
+                aria-label="Close menu"
+              >
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Navigation Links */}
+            <div className="py-4">
               {navLinks.map((link) => (
                 <button
                   key={link.href}
                   onClick={() => handleLinkClick(link.href)}
-                  className={`block w-full text-left px-3 py-2 text-base font-medium transition-colors duration-200 ${
+                  className={`block w-full text-left px-6 py-4 text-base font-medium transition-colors duration-200 ${
                     isActiveLink(link.href)
-                      ? 'text-blue-600 bg-blue-50'
-                      : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
+                      ? 'text-blue-600 bg-blue-50 border-l-4 border-blue-600'
+                      : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
                   }`}
                 >
                   {link.label}
@@ -130,8 +183,8 @@ export default function Navbar() {
               ))}
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </nav>
   );
 }

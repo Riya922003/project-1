@@ -8,7 +8,7 @@ interface HeroProps {
 
 export default function Hero({ onEnquire }: HeroProps) {
   return (
-    <div className="bg-slate-50 py-4 px-6 md:px-10">
+    <div className="bg-slate-50 py-4 px-6 md:px-5">
       <div className="max-w-[1200px] mx-auto">
         <div className="bg-[#E8EEF7] rounded-2xl overflow-hidden shadow-md">
 
