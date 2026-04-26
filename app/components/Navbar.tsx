@@ -33,10 +33,10 @@ function HamburgerIcon() {
   );
 }
 
-function CloseIcon({ size = 8 }: { size?: number }) {
+function CloseIcon() {
   return (
     <svg
-      className={`w-${size} h-${size}`}
+      className="w-6 h-6"
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
@@ -64,7 +64,7 @@ function NavLogo() {
 // ─── Main component ───────────────────────────────────────────────────────────
 
 export default function Navbar() {
-  const [activeSection, setActiveSection]     = useState('home');
+  const [activeSection, setActiveSection]       = useState('home');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Active section detection via IntersectionObserver
@@ -81,10 +81,18 @@ export default function Navbar() {
     return () => sections.forEach((section) => observer.unobserve(section));
   }, []);
 
-  // Lock body scroll when mobile menu is open
+  // Close dropdown on click outside
   useEffect(() => {
-    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : 'unset';
-    return () => { document.body.style.overflow = 'unset'; };
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('nav')) setIsMobileMenuOpen(false);
+    };
+
+    if (isMobileMenuOpen) {
+      document.addEventListener('click', handleClickOutside);
+    }
+
+    return () => document.removeEventListener('click', handleClickOutside);
   }, [isMobileMenuOpen]);
 
   const handleLinkClick = useCallback((href: string) => {
@@ -133,58 +141,34 @@ export default function Navbar() {
             aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMobileMenuOpen}
           >
-            {isMobileMenuOpen ? <CloseIcon size={8} /> : <HamburgerIcon />}
+            {isMobileMenuOpen ? <CloseIcon /> : <HamburgerIcon />}
           </button>
 
         </div>
       </div>
 
-      {/* Mobile nav overlay */}
-      {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-50 md:hidden">
-
-          {/* Backdrop */}
-          <div
-            className="absolute inset-0 bg-black/50"
-            onClick={() => setIsMobileMenuOpen(false)}
-            aria-hidden="true"
-          />
-
-          {/* Slide-in panel */}
-          <div className="absolute top-0 right-0 bottom-0 w-80 bg-white shadow-xl">
-
-            {/* Panel header */}
-            <div className="flex justify-between items-center p-4 border-b border-gray-100">
-              <NavLogo />
-              <button
-                onClick={() => setIsMobileMenuOpen(false)}
-                aria-label="Close menu"
-                className="p-2 text-gray-600 hover:text-blue-600"
-              >
-                <CloseIcon size={6} />
-              </button>
-            </div>
-
-            {/* Nav links */}
-            <div className="py-4">
-              {navLinks.map((link) => (
-                <button
-                  key={link.href}
-                  onClick={() => handleLinkClick(link.href)}
-                  className={`block w-full text-left px-6 py-4 text-base font-medium transition-colors duration-200 ${
-                    isActive(link.href)
-                      ? 'text-blue-600 bg-blue-50 border-l-4 border-blue-600'
-                      : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
-                  }`}
-                >
-                  {link.label}
-                </button>
-              ))}
-            </div>
-
-          </div>
+      {/* Mobile dropdown — floating card */}
+    {/* Mobile dropdown — floating card */}
+    {isMobileMenuOpen && (
+      <div className="md:hidden absolute top-16 right-4 z-50">
+        <div className="bg-white rounded-2xl shadow-xl w-72 py-2 border border-gray-100">
+          {navLinks.map((link) => (
+            <button
+              key={link.href}
+              onClick={() => handleLinkClick(link.href)}
+              className={`block w-full text-left px-6 py-4 text-base font-medium transition-colors duration-200 ${
+                isActive(link.href)
+                  ? 'text-blue-600 bg-blue-50 border-l-4 border-blue-600'
+                  : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+              }`}
+            >
+              {link.label}
+            </button>
+          ))}
         </div>
-      )}
+      </div>
+    )}
+
     </nav>
   );
 }
